@@ -1,0 +1,18 @@
+{
+  "name": "cc-d2-my-rice-cooker-micael-jerry-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "prettify": "prettier --write 'src/**/*.js'",
+    "check": "eslint src/**/*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1"
+  }
+}
