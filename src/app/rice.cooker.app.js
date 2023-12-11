@@ -98,13 +98,13 @@ const run = async () => {
 			connectPowerSource(riceCooker);
 		} else if (choice === 5) {
 			bar('Cook');
-      await cook(riceCooker)
-        .then(res => console.log(res))
-        .catch(err => console.log(err.message));
+			await cook(riceCooker)
+				.then(res => console.log(res))
+				.catch(err => console.log(err.message));
 		} else if (choice === 6) {
 			conditionRunning = false;
 			console.log('Bye');
-      process.exit(0)
+			process.exit(0);
 		} else {
 			console.log('RETRY');
 		}
