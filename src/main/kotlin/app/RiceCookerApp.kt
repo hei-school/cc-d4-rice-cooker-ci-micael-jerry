@@ -1,10 +1,17 @@
 package app
 
 import model.RiceCooker
-import view.printMenu
 import model.types.Result
-import service.*
+import service.addRice
+import service.addWater
+import service.removeRice
+import service.removeWater
+import service.drain
+import service.viewContent
+import service.connectPowerSource
+import service.cook
 import view.bar
+import view.printMenu
 
 fun add(riceCooker: RiceCooker) {
     var conditionRunning = true

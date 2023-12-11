@@ -3,13 +3,13 @@ package service
 import model.RiceCooker
 import model.types.Result
 fun riceGramToLiter(riceGram: Double): Double {
-    val densityOfRice: Double = 0.6  // g/ml
-    val riceCapacityInLiters: Double = (riceGram / 1000) / densityOfRice   // l
+    val densityOfRice: Double = 0.6 // g/ml
+    val riceCapacityInLiters: Double = (riceGram / 1000) / densityOfRice // l
     return riceCapacityInLiters
 }
 
 fun riceWithWater(riceGram: Double, waterLiter: Double): Double {
-    return waterLiter + riceGramToLiter(riceGram)    // l
+    return waterLiter + riceGramToLiter(riceGram) // l
 }
 
 fun isCanBeContained(riceCooker: RiceCooker, riceGram: Double = 0.0, waterLiter: Double = 0.0): Boolean {
@@ -32,7 +32,7 @@ fun addRice(riceCooker: RiceCooker): Result {
             throw NumberFormatException()
         }
     } catch (nfe: NumberFormatException) {
-        Result(false, "Enter a valid number - Retry", error =  nfe)
+        Result(false, "Enter a valid number - Retry", error = nfe)
     }
 }
 
