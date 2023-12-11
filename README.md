@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-Make sure you have maven, java and k installed
+Make sure you have maven, java and kotlin installed
 
 ### Kotlin Coding Conventions
 
@@ -34,5 +34,12 @@ Kotlin is the programming language used in this project. Kotlin coding conventio
    cd out
    kotlin MainKt.class
 
-https://pinterest.github.io/ktlint/0.49.1/install/integrations/
-https://pinterest.github.io/ktlint/0.49.1/install/cli/
+4. **Code verification with ktlint**
+
+    ```bash
+    ktlint
+
+5. **If you want to format the code**
+
+    ```bash
+    npm run prettify

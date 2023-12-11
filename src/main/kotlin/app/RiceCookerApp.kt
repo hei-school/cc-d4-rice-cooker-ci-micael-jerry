@@ -4,12 +4,12 @@ import model.RiceCooker
 import model.types.Result
 import service.addRice
 import service.addWater
-import service.removeRice
-import service.removeWater
-import service.drain
-import service.viewContent
 import service.connectPowerSource
 import service.cook
+import service.drain
+import service.removeRice
+import service.removeWater
+import service.viewContent
 import view.bar
 import view.printMenu
 
