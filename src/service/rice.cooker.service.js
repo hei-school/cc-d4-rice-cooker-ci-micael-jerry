@@ -50,8 +50,96 @@ const addWater = async (riceCooker) => {
   }
 }
 
+const removeRice = async (riceCooker) => {
+  const inputStr = await myPrompt("remove rice (grams): ");
+  try {
+    const riceRemove = parseFloat(inputStr);
+    if (riceRemove > 0) {
+      if (riceRemove >= riceCooker.riceGram) {
+        riceCooker.riceGram = 0;
+        Promise.resolve("All the rice has been removed")
+      }
+      riceCooker.riceGram -= riceRemove;
+      Promise.resolve(`${riceRemove} grams of rice have been removed`)
+    } else {
+      throw new Error();
+    }
+  } catch (error) {
+    Promise.reject(error);
+  }
+}
+
+const removeWater = async (riceCooker) => {
+  const inputStr = myPrompt("remove water (liters): ");
+  try {
+    const waterRemove = parseFloat(inputStr);
+    if (waterRemove > 0) {
+      if (waterRemove >= riceCooker.waterLiter) {
+        riceCooker.waterLiter = 0;
+        Promise.resolve("All water removed");
+      }
+      riceCooker.riceGram -= waterRemove;
+      Promise.resolve(`${waterRemove} liter of water removed`);
+    } else {
+      throw new Error();
+    }
+  } catch (error) {
+    Promise.reject(error);
+  }
+}
+
+const drain = async (riceCooker) => {
+  riceCooker.riceGram = 0;
+  riceCooker.waterLiter = 0;
+  Promise.resolve("The rice cooker has been emptied");
+}
+
+const connectPowerSource = (riceCooker) => {
+  riceCooker.isPowered = !riceCooker.isPowered;
+}
+
+const cook = (riceCooker) => {
+  try {
+    if (!riceCooker.isPowered) {
+      throw new Error("Your rice cooker is not connected to an electric source");
+    }
+    if (riceCooker.waterLiter <= 0) {
+      throw new Error("The rice cooker contains no water");
+    }
+    if (riceCooker.riceGram <= 0) {
+      throw new Error("The rice cooker does not contain rice");
+    }
+    if (riceCooker.waterLiter < riceGramToLiter(riceCooker.riceGram)) {
+      throw new Error("The rice cooker does not contain enough water");
+    }
+    Promise.resolve("A FEW MINUTES LATER\nYour rice is cooked")
+  } catch (error) {
+    Promise.reject(error);
+  }
+}
+
+const viewContent = (riceCooker) => {
+  console.log(`SOURCE POWER: ${riceCooker.is_powered}`);
+  if (riceCooker.riceGram === 0 && riceCooker.waterLiter === 0) {
+    console.log("The rice cooker is empty");
+  } else {
+    if (riceCooker.waterLiter > 0) {
+      console.log(`WATER: ${riceCooker.water_liter} liter`);
+    }
+    if (riceCooker.riceGram > 0) {
+      console.log(`RICE: ${riceCooker.rice_gram} gram`);
+    }
+  }
+}
+
 module.exports.riceGramToLiter = riceGramToLiter;
 module.exports.riceWithWater = riceWithWater;
 module.exports.isCanBeContained = isCanBeContained;
 module.exports.addRice = addRice;
 module.exports.addWater = addWater;
+module.exports.removeRice = removeRice;
+module.exports.removeRice = removeWater;
+module.exports.drain = drain;
+module.exports.connectPowerSource = connectPowerSource;
+module.exports.cook = cook;
+module.viewContent = viewContent;
