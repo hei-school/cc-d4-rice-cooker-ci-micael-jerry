@@ -34,7 +34,7 @@ const addRice = async riceCooker => {
 			throw new Error('Enter a valid number - Retry');
 		}
 	} catch (error) {
-		Promise.reject(error);
+    throw new Error("Enter a valid number - Retry")
 	}
 };
 
@@ -52,7 +52,7 @@ const addWater = async riceCooker => {
 			throw new Error('Enter a valid number - Retry');
 		}
 	} catch (error) {
-		Promise.reject(error);
+    throw new Error("Enter a valid number - Retry")
 	}
 };
 
@@ -68,30 +68,30 @@ const removeRice = async riceCooker => {
 			riceCooker.riceGram -= riceRemove;
 			Promise.resolve(`${riceRemove} grams of rice have been removed`);
 		} else {
-			throw new Error();
+      throw new Error("Enter a valid number - Retry");
 		}
 	} catch (error) {
-		Promise.reject(error);
+    throw new Error("Enter a valid number - Retry")
 	}
 };
 
 const removeWater = async riceCooker => {
 	const inputStr = myPrompt('remove water (liters): ');
-	try {
-		const waterRemove = parseFloat(inputStr);
-		if (waterRemove > 0) {
-			if (waterRemove >= riceCooker.waterLiter) {
-				riceCooker.waterLiter = 0;
-				Promise.resolve('All water removed');
-			}
-			riceCooker.riceGram -= waterRemove;
-			Promise.resolve(`${waterRemove} liter of water removed`);
-		} else {
-			throw new Error();
-		}
-	} catch (error) {
-		Promise.reject(error);
-	}
+  try {
+    const waterRemove = parseFloat(inputStr);
+    if (waterRemove > 0) {
+      if (waterRemove >= riceCooker.waterLiter) {
+        riceCooker.waterLiter = 0;
+        Promise.resolve('All water removed');
+      }
+      riceCooker.riceGram -= waterRemove;
+      Promise.resolve(`${waterRemove} liter of water removed`);
+    } else {
+      throw new Error("Enter a valid number - Retry");
+    }
+  } catch (err) {
+    throw new Error("Enter a valid number - Retry")
+  }
 };
 
 const drain = async riceCooker => {
@@ -104,8 +104,7 @@ const connectPowerSource = riceCooker => {
 	riceCooker.isPowered = !riceCooker.isPowered;
 };
 
-const cook = riceCooker => {
-	try {
+const cook = async riceCooker => {
 		if (!riceCooker.isPowered) {
 			throw new Error(
 				'Your rice cooker is not connected to an electric source',
@@ -121,9 +120,6 @@ const cook = riceCooker => {
 			throw new Error('The rice cooker does not contain enough water');
 		}
 		Promise.resolve('A FEW MINUTES LATER\nYour rice is cooked');
-	} catch (error) {
-		Promise.reject(error);
-	}
 };
 
 const viewContent = riceCooker => {

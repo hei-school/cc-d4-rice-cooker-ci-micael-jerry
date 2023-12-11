@@ -23,11 +23,11 @@ const add = async riceCooker => {
 		if (choice === 1) {
 			await addRice(riceCooker)
 				.then(res => console.log(res))
-				.catch(err => console.log(err));
+				.catch(err => console.log(err.message));
 		} else if (choice === 2) {
 			await addWater(riceCooker)
 				.then(res => console.log(res))
-				.catch(err => console.log(err));
+				.catch(err => console.log(err.message));
 		} else if (choice === 3) {
 			conditionRunning = false;
 		} else {
@@ -51,15 +51,15 @@ const remove = async riceCooker => {
 		if (choice === 1) {
 			await removeRice(riceCooker)
 				.then(res => console.log(res))
-				.catch(err => console.log(err));
+				.catch(err => console.log(err.message));
 		} else if (choice === 2) {
 			await removeWater(riceCooker)
 				.then(res => console.log(res))
-				.catch(err => console.log(err));
+				.catch(err => console.log(err.message));
 		} else if (choice === 3) {
 			await drain(riceCooker)
 				.then(res => console.log(res))
-				.catch(err => console.log(err));
+				.catch(err => console.log(err.message));
 		} else if (choice === 4) {
 			conditionRunning = false;
 		} else {
@@ -98,12 +98,13 @@ const run = async () => {
 			connectPowerSource(riceCooker);
 		} else if (choice === 5) {
 			bar('Cook');
-			await cook(riceCooker)
-				.then(res => console.log(res))
-				.catch(err => console.log(err));
+      await cook(riceCooker)
+        .then(res => console.log(res))
+        .catch(err => console.log(err.message));
 		} else if (choice === 6) {
 			conditionRunning = false;
-			console.log('Au revoir');
+			console.log('Bye');
+      process.exit(0)
 		} else {
 			console.log('RETRY');
 		}
