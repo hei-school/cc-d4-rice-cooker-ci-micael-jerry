@@ -76,7 +76,7 @@ const removeRice = async riceCooker => {
 };
 
 const removeWater = async riceCooker => {
-	const inputStr = myPrompt('remove water (liters): ');
+	const inputStr = await myPrompt('remove water (liters): ');
 	try {
 		const waterRemove = parseFloat(inputStr);
 		if (waterRemove > 0) {
