@@ -14,14 +14,14 @@ describe('Rice cooker service TEST', () => {
     })
   })
 
-  describe('riceWithWater function TEST', () => {
+  describe('riceWithWater', () => {
     it('Should return the sum of rice in grams and water in liters (liters)', () => {
       const res = riceWithWater(500, 2);
       expect(res).to.be.closeTo(2.8, 0.05);
     })
   })
 
-  describe('isCanBeContained function TEST', () => {
+  describe('isCanBeContained', () => {
     it('Should return true if the rice can be contained', () => {
       const riceCooker = createRiceCooker(3, 0, 0);
       const res = isCanBeContained(riceCooker, 500, 2);
