@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "prettify": "prettier --write 'src/**/*.js'",
-    "check": "eslint src/**/*"
+    "check": "eslint src/**/*",
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,9 @@
   "dependencies": {
     "eslint": "^8.55.0",
     "prettier": "^3.1.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0"
   }
 }
