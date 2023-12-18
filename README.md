@@ -22,16 +22,16 @@ Kotlin is the programming language used in this project. Kotlin coding conventio
    cd cc-d2-my-rice-cooker-micael-jerry
    git checkout feature/kotlin
 
-2. **Installing the various dependencies required for typescript to function properly**
+2. **Installing the various dependencies required**
 
    ```bash
    mvn install
 
-3. **Run the project :**
+3. **Compile and Run the project :**
 
    ```bash
-   kotlinc -d out/ -cp src/ src/**/*.kt
-   cd out
+   mvn compile
+   cd target/classes
    kotlin MainKt.class
 
 4. **Code verification with ktlint**
@@ -43,3 +43,8 @@ Kotlin is the programming language used in this project. Kotlin coding conventio
 
     ```bash
     ktlint --format
+
+6. **Test the project**
+
+   ```bash
+   mvn test

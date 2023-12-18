@@ -109,11 +109,23 @@ class RiceCookerServiceTest {
     }
 
     @Test
-    fun drain() {
+    fun drain_ok() {
+        val riceCooker = RiceCooker(maxCapacityLiter = 3.0, riceGram = 600.0, waterLiter = 1.0)
+
+        drain(riceCooker)
+
+        Assertions.assertEquals(0.0, riceCooker.riceGram)
+        Assertions.assertEquals(0.0, riceCooker.waterLiter)
     }
 
     @Test
-    fun connectPowerSource() {
+    fun connectPowerSource_ok() {
+        val riceCooker = RiceCooker(maxCapacityLiter = 3.0)
+
+        connectPowerSource(riceCooker)
+        Assertions.assertTrue(riceCooker.isPowered)
+        connectPowerSource(riceCooker)
+        Assertions.assertFalse(riceCooker.isPowered)
     }
 
     @Test
