@@ -42,4 +42,4 @@ Kotlin is the programming language used in this project. Kotlin coding conventio
 5. **If you want to format the code**
 
     ```bash
-    npm run prettify
+    ktlint --format
