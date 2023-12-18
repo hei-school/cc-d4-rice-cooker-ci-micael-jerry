@@ -129,6 +129,22 @@ class RiceCookerServiceTest {
     }
 
     @Test
-    fun cook() {
+    fun cook_ok() {
+        val riceCooker = RiceCooker(maxCapacityLiter = 3.0, riceGram = 600.0, waterLiter = 1.0)
+        connectPowerSource(riceCooker)
+
+        val result = cook(riceCooker)
+
+        Assertions.assertTrue(result.isSuccess)
+    }
+
+    @Test
+    fun cook_ko() {
+        val riceCooker = RiceCooker(maxCapacityLiter = 3.0)
+        connectPowerSource(riceCooker)
+
+        val result = cook(riceCooker)
+
+        Assertions.assertFalse(result.isSuccess)
     }
 }
