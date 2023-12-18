@@ -61,15 +61,51 @@ class RiceCookerServiceTest {
     }
 
     @Test
-    fun addWater() {
+    fun addWater_ok() {
+        val riceCooker = RiceCooker(maxCapacityLiter = 2.0)
+        simulateUserInput("1.5\n")
+
+        val result = addWater(riceCooker)
+
+        Assertions.assertTrue(result.isSuccess)
+        Assertions.assertEquals("1.5 liter of water added", result.message)
+        Assertions.assertEquals(1.5, riceCooker.waterLiter)
     }
 
     @Test
-    fun removeRice() {
+    fun addWater_ko() {
+        val riceCooker = RiceCooker(maxCapacityLiter = 2.0)
+        simulateUserInput("2.5\n")
+
+        val result = addWater(riceCooker)
+
+        Assertions.assertFalse(result.isSuccess)
+        Assertions.assertEquals("You exceed the maximum capacity of the rice cooker", result.message)
+        Assertions.assertEquals(0.0, riceCooker.waterLiter)
     }
 
     @Test
-    fun removeWater() {
+    fun removeRice_ok() {
+        val riceCooker = RiceCooker(maxCapacityLiter = 3.0)
+
+        riceCooker.riceGram = 1200.0
+        simulateUserInput("600\n")
+        val result = removeRice(riceCooker)
+
+        Assertions.assertTrue(result.isSuccess)
+        Assertions.assertEquals(600.0, riceCooker.riceGram)
+    }
+
+    @Test
+    fun removeWater_ok() {
+        val riceCooker = RiceCooker(maxCapacityLiter = 3.0)
+
+        riceCooker.waterLiter = 2.5
+        simulateUserInput("1\n")
+        val result = removeWater(riceCooker)
+
+        Assertions.assertTrue(result.isSuccess)
+        Assertions.assertEquals(1.5, riceCooker.waterLiter)
     }
 
     @Test
